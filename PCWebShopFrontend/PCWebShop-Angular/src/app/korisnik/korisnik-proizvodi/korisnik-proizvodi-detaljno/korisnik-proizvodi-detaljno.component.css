@@ -1,0 +1,56 @@
+.conteiner {
+  height: 100%;
+  width: 70%;
+  display: block;
+  margin-left: 15%;
+  margin-right: 15%;
+  border: solid 3px #b7b7bb;
+  border-radius: 8px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 8%;
+  margin-top: 5%;
+}
+.back{
+  width: 30px;
+  height: 30px;
+  padding-top: 1%;
+}
+.conteiner2 {
+  display: flex;
+}
+.card-image{
+  float: left;
+  width: 450px;
+  height: 350px;
+  margin: 15px;
+}
+.card-image:hover{
+  cursor: pointer;
+}
+.picture {
+  float: left;
+  width: 550px;
+  height: 350px;
+  margin: 15px;
+}
+
+.opis {
+  width: 80%;
+  float: left;
+  margin-left: 2%;
+  padding-top: 2%;
+}
+
+.table {
+  float: left;
+  display: flex;
+  margin-top: 60px;
+  margin-left: 100px;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+

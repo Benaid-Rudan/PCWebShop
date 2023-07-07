@@ -1,0 +1,39 @@
+<section class="py-5">
+  <h2 style="text-align: center">Svi proizvodi</h2>
+  <div  class="okvir">
+    <div class="pretrazi" >
+      <input type="text" class="pretrazi2" placeholder="Pretraži"  style="color:black;" [(ngModel)]="filter">
+    </div>
+  </div>
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <div *ngFor="let p of getProizvod()"  class="col mb-5">
+        <div class="card h-100">
+
+          <img class="card-img-top" style="height:250px; width: 100%;"  [routerLink]="['/proizvod-detaljno', p.proizvodID]" src="{{getSlikaProizvoda(p)}}" routerLink="/proizvod-detaljno/+{{p.id}}" alt="Nije moguće učitati sliku"   />
+
+          <div class="card-body p-4">
+            <div class="text-center" style="margin-top: 2%">
+
+              <h5 class="fw-bolder" style="margin-top: 2%" >{{p.nazivProizvoda}}</h5>
+
+              {{p.proizvodjac.nazivProizvodjaca}}
+              <br>
+              {{p.cijena}} KM
+            </div>
+          </div>
+          <!-- Product actions-->
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div *ngIf="loginInfo().isPermisijaKorisnik" class="text-start"><button class="btn btn-outline-dark mt-auto" [routerLink]="['/proizvod-detaljno', p.proizvodID]"  routerLink="/proizvod-detaljno/+{{p.id}}">Detaljno</button></div>
+            <div *ngIf="!loginInfo().isLogiran" class="text-start"><button class="btn btn-outline-dark mt-auto" [routerLink]="['/proizvod-detaljno', p.proizvodID]"  routerLink="/proizvod-detaljno/+{{p.id}}">Detaljno</button></div>
+            <div *ngIf="loginInfo().isPermisijaKorisnik" class="text-end"><button class="btn btn-primary mt-auto"  (click)="dodajUKorpu(p)">Dodaj u korpu</button></div>
+            <div *ngIf="!loginInfo().isLogiran" class="text-end"><button class="btn btn-primary mt-auto"  >Dodaj u korpu</button></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+

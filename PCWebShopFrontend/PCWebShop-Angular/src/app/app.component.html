@@ -1,0 +1,72 @@
+<div class="wrapper" >
+  <div class="dada" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar" style="position:static" >
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand"  routerLink="/pocetna"> <img id="logo" src="assets/logo.png" ></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"  (click)="this.lista=null"  routerLink="/pocetna" >Početna</a>
+            </li>
+            <li class="dropdown" >
+              <a class="nav-link active">
+              <a class="nav-item">Proizvodi </a>
+              <div class="dropdown-content" id="tekst">
+                <a  *ngFor="let k of getKategorijePodaci()"   (click)="OtvoriKategorije(k)">{{k.nazivKategorije}}</a>
+                <a routerLink="/korisnik-proizvodi-svi">Svi proizvodi</a>
+              </div>
+            </a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link active" routerLink="korisnik-oglasi"  (click)="this.lista=null" >Oglasi</a></li>
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="korisnik-postovi"   (click)="this.lista=null"> Postovi</a>
+            </li>
+          </ul>
+
+          <button *ngIf="loginInfo().isLogiran==false" routerLink="/registracija"  class="btn btn-success"  type="submit" >
+            Registracija
+          </button>
+          <button *ngIf="loginInfo().isLogiran==false"  class="btn btn-danger" type="submit" routerLink="/login">
+            Prijava
+          </button>
+
+
+          <li *ngIf="loginInfo().isLogiran" class="nav-item dropdown" >
+            <button class="btn btn-success" id="dashboard" *ngIf="loginInfo().isPermisijaAdmin" (click)="otvoriListu()">
+              <a>Dashboard</a>
+            </button>
+            <button id="btn-korpa" *ngIf="loginInfo().isPermisijaKorisnik" routerLink="/korpa"  class="btn btn-success" type="submit">
+              Korpa
+            </button>
+            <button *ngIf="loginInfo().isLogiran"  class="btn btn-danger" (click)="logoutButton()">
+              Odjavi se
+            </button>
+            <a class="navbar-brand" id="profil2" *ngIf="loginInfo().isPermisijaKorisnik" routerLink="/korisnik-korisnicki-profil"> <img id="profil" src="assets/profil4.png" ></a>
+          </li>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="sidebar1"   *ngIf="loginInfo().isPermisijaAdmin && lista!=null">
+  <button id="batn" class="btn btn-outline-dark" routerLink="/administrator-proizvodi">Dodaj proizvod</button>
+  <button id="batn1" class="btn btn-outline-dark" routerLink="/administrator-kategorija">Dodaj kategoriju</button>
+  <button id="batn4" class="btn btn-outline-dark" routerLink="/administrator-proizvodjac">Dodaj proizvodjaca</button>
+  <button id="batn5" class="btn btn-outline-dark" routerLink="/administrator-oglasi">Dodaj oglas</button>
+  <button id="batn6" class="btn btn-outline-dark"  routerLink="/administrator-postovi">Dodaj post</button>
+  <button id="batn7" class="btn btn-outline-dark"  routerLink="/administrator-narudzbe">Narudžbe</button>
+  <button id="batn8" class="btn btn-outline-dark" routerLink="/administrator-korisnicki-profili">Korisnički računi</button>
+  <button id="batn9" class="btn btn-outline-dark" routerLink="/administrator-korisnik-chart">Chart 1</button>
+  <button id="batn10" class="btn btn-outline-dark" routerLink="/administrator-proizvodi-chart">Chart 2</button>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer class="footer"></app-footer>

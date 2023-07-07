@@ -1,0 +1,98 @@
+<br>
+<input type="text" id="myInput" [(ngModel)]="naziv" placeholder="Pretrazi proizvod...">
+
+<table class="table table-striped" id="okvirTabele" >
+  <tr >
+    <th>Naziv proizvoda</th>
+    <th>Opis proizvoda</th>
+    <th>Na stanju</th>
+    <th>Cijena</th>
+    <th>Slika</th>
+    <th>Proizvodjac</th>
+    <th>Snizen</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let p of getPodaciProizvoda()">
+    <th>{{p.nazivProizvoda}}</th>
+    <th>{{p.opis}}</th>
+    <th>{{p.naStanju}}</th>
+    <th>{{p.cijena}}</th>
+    <th>
+      <img class="profilna-slika" style="width: 50px" src="{{getSlika(p)}}">
+    </th>
+    <th>{{p.proizvodjac.nazivProizvodjaca}}</th>
+    <th>{{p.snizen}}</th>
+    <th><button class="dugme" (click)="urediProizvod(p)">Uredi</button></th>
+    <th><button class="dugme"  (click)="obrisiProizvod(p)">Obrisi</button></th>
+
+  </tr>
+  </tbody>
+</table>
+<button class="dugme2"  (click)="noviProizvodDugme()">Dodaj proizvod</button>
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total">
+</app-pagination>
+
+
+<div *ngIf="odabraniProizvod!=null" class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-modal="true" role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">{{nazivDijaloga}}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="odabraniProizvod=null"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Naziv proizvoda</label>
+          <input class="form-control" [(ngModel)]="odabraniProizvod.nazivProizvoda" placeholder="Naziv proizvoda">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Opis proizvoda</label>
+          <input type="text" class="form-control" [(ngModel)]="odabraniProizvod.opis" placeholder="Opis proizvoda">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Na stanju</label>
+          <input type="number" class="form-control"  [(ngModel)]="odabraniProizvod.naStanju" placeholder="Na stanju">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cijena </label>
+          <input  type="number" class="form-control" [(ngModel)]="odabraniProizvod.cijena"  placeholder="Cijena KM">
+        </div>
+        <div *ngIf="odabraniProizvod.proizvodID!=0" class="mb-3">
+          <label class="form-label">Stara slika</label>
+          <img style="display: block; max-width: 100%;max-height: 200px" src="{{getSlika(odabraniProizvod)}}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nova slika</label>
+          <input class="from-control" id="slika-input" type="file" accept="image/*" (change)="generisi_preview()">
+          <img style="max-width: 100%;max-height: 200px" src="{{odabraniProizvod.slika_proizvoda_nova_base64}}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Proizvodjac</label>
+          <select class="form-control" [(ngModel)]="odabraniProizvod.proizvodjacID" >
+            <option *ngFor="let x of podaciProizvodjaca" value="{{x.proizvodjacID}}">{{x.nazivProizvodjaca}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Kategorija</label>
+          <select class="form-control" [(ngModel)]="odabraniProizvod.kategorijaID" >
+            <option *ngFor="let x of podaciKategorije" value="{{x.kategorijaID}}">{{x.nazivKategorije}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Snizen</label>
+          <input  [(ngModel)]="odabraniProizvod.snizen" type="checkbox" >
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="odabraniProizvod=null">Close</button>
+        <button type="button" class="btn btn-primary" (click)="snimiProizvod()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

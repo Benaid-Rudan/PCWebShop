@@ -1,0 +1,34 @@
+<div class="poravnaj">
+
+  <p></p>
+  <input type="text" id="myInput" [(ngModel)]="ime" placeholder="Pretrazi korisnike...">
+
+
+  <table id="myTable" >
+    <tr class="header">
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Korisnicko ime</th>
+      <th>Email</th>
+      <th>Datum rodjenja
+      <th>Drzava</th>
+      <th>Akcija</th>
+    </tr>
+    <tbody>
+    <tr *ngFor="let p of getProizvodiPodaci()">
+      <td>{{p.ime}}</td>
+      <td>{{p.prezime}}</td>
+      <td>{{p.korisnickoIme}}</td>
+      <td>{{p.email}}</td>
+      <td>{{p.datumRodjenja | date:'MM.dd.yyyy'}}</td>
+      <td>{{p.drzava.naziv}}</td>
+      <td>
+        <button class="obrisi" (click)="obrisi(p)">Obrisi</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div id="div2">
+  </div>
+
+</div>

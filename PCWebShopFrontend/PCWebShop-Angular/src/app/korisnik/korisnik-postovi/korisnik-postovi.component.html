@@ -1,0 +1,44 @@
+<h2 style="text-align:  center;padding-top: 2%"> Svi postovi </h2>
+<div class="sve">
+<div *ngFor=" let p of getPostoviPodaci()"  class="conteiner">
+
+  <div class="conteiner2" >
+
+        <table style="border: none;border-bottom-color: white">
+          <tr>
+            <td>
+              <div class="picture">
+
+                <figure class="slika">
+                  <img class="card-image img-thumbnail" src="{{getSlika(p)}}" alt="Nije moguće učitati sliku" />
+                </figure>
+              </div>
+            </td>
+              <td id="strana" style="padding-bottom: 0%;padding-top: 2%;">
+                 <p id="naslovID"> <b>{{p.naslov}}</b></p>
+                <br>
+                <b>Autor:  </b> <p>  {{p.autorPosta.ime}} {{p.autorPosta.prezime}}</p>
+              </td>
+            <br>
+            <br>
+          <tr>
+            <td>
+              <div class="sadrzaj">
+                {{p.sadrzaj}}
+              </div>
+            </td>
+
+          </tr>
+        </table>
+    </div>
+
+  </div>
+</div>
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limitPostovi"
+  [count]="total">
+</app-pagination>

@@ -1,0 +1,44 @@
+<br>
+<table class="table table-striped"  id="okvirTabele">
+  <tr >
+    <th>Naziv proizvodjaca</th>
+    <th>Drzava (Sjediste)</th>
+    <th>Obrisi</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let p of getPodaciProizvodjac()">
+    <th>{{p.nazivProizvodjaca}}</th>
+    <th>{{p.drzava.naziv}}</th>
+    <th><button class="dugme" (click)="obrisiProizvodjaca(p)">Obrisi</button></th>
+
+  </tr>
+  </tbody>
+</table>
+<button class="dugme2" (click)="noviProizvodjacDugme()">Dodaj proizvodjaca</button>
+<div *ngIf="odabraniProizvodjac!=null" class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-modal="true" role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">Dodaj proizvodjaca</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="odabraniProizvodjac=null"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Naziv proizvodjaca</label>
+          <input class="form-control" [(ngModel)]="odabraniProizvodjac.nazivProizvodjaca" placeholder="Naziv proizvodjaca">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Drzava</label>
+          <select class="form-control" [(ngModel)]="odabraniProizvodjac.drzavaID">
+            <option *ngFor="let x of podaciDrzava" [value]="x.id">{{x.naziv}}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="odabraniProizvodjac=null">Close</button>
+        <button type="button" class="btn btn-primary" (click)="snimiProizvodjaca()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

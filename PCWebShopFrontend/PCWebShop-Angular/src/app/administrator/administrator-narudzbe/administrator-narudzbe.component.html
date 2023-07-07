@@ -1,0 +1,32 @@
+<div class="poravnaj">
+  <p></p>
+
+  <table class=" myTable" >
+    <tr class="header">
+      <th>Datum kreiranja</th>
+      <th>Naručioc</th>
+      <th>Naziv dostave</th>
+      <th>Grad</th>
+      <th>Aktivna</th>
+      <th>Potvrdjena</th>
+      <th>Akcija</th>
+    </tr>
+    <tbody>
+
+    <tr *ngFor="let n of getNarudzbaPodaci()">
+      <td>{{n.datumKreiranja | date:'MM.dd.yyyy'}}</td>
+      <td>{{n.narucioc.ime}}</td>
+      <td>{{n.dostavljac.nazivDostave}}</td>
+      <td>{{n.dostavljac.adresa}}</td>
+      <td *ngIf="n.aktivna">DA</td>
+      <td *ngIf="!n.aktivna">NE</td>
+      <td *ngIf="n.potvrdjena">DA</td>
+      <td *ngIf="!n.potvrdjena">NE</td>
+      <td><button class="dugme" (click)="obrisi(n)">Obrisi</button></td>
+      <td><button class="dugme" (click)="detalji(n)">Uredi</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+<app-administrator-narudzbe-edit [urediNarudzbu]="odabranaNarudzba"></app-administrator-narudzbe-edit>

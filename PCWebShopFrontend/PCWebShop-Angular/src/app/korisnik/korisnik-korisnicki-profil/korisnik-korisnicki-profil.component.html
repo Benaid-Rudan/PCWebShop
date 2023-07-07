@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="col-md-5 border-right border-left">
+      <div class="p-3 py-5">
+          <h4 class="text-center" >Postavke profila</h4>
+        <div class="mt-5 row mt-2">
+          <div class="col-md-6"><label class="labels">Ime</label><input type="text" [(ngModel)]="korisnikPodaci.ime" class="form-control" placeholder="prezime" ></div>
+          <div class="col-md-6"><label class="labels">Prezime</label><input type="text" [(ngModel)]="korisnikPodaci.prezime" class="form-control" placeholder="prezime"></div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12"><label class="labels">Korisnicko ime</label><input type="text" [(ngModel)]="korisnikPodaci.korisnickoIme" class="form-control" placeholder="korisnicko ime" value=""></div>
+          <div class="col-md-12"><label class="labels">Adresa 1</label><input type="text" [(ngModel)]="korisnikPodaci.adresa1" class="form-control" placeholder="Adresa za dostavu" value=""></div>
+          <div class="col-md-12"><label class="labels">Adresa 2</label><input type="text"[(ngModel)]="korisnikPodaci.adresa2" class="form-control" placeholder="Pomoćna adresa za dostavu" value=""></div>
+          <div class="col-md-12"><label class="labels">Država</label>
+            <select class="form-control" [(ngModel)]="korisnikPodaci.drzavaID" >
+              <option *ngFor="let x of getDrzave()" value="{{x.id}}">{{x.opis}}</option>
+            </select>
+          </div>
+          <div class="col-md-12"><label class="labels">Email</label><input type="text" [(ngModel)]="korisnikPodaci.email" class="form-control" placeholder="example@gmail.com" value=""></div>
+          <div class="col-md-12"><label class="labels">Datum rođenja</label><input [(ngModel)]="korisnikPodaci.datumRodjenja" type="date" class="form-control" value=""></div>
+        </div>
+
+        <div class="mt-5 text-center"><button class="btn btn-primary" (click)="spasiPromjene()" type="button" >Spasi promjene</button></div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+
+<div  class="conteiner">
+  <div class="conteiner2">
+    <div class="picture">
+      <div>
+        <figure class="image is-3by2">
+          <img class="card-image" src="{{getSlika(proizvodGet.proizvodID)}}" alt="Nije moguće učitati sliku" />
+        </figure>
+      </div>
+    </div>
+    <div class="table">
+
+      <table>
+        <tr>
+          <td><b>Naziv proizvoda: </b>  {{proizvodGet.nazivProizvoda}} </td>
+        </tr>
+        <tr>
+          <td><b>Kategorija: </b> {{proizvodGet.kategorija.nazivKategorije}} </td>
+        </tr>
+        <tr>
+          <td><b>Proizvođač: </b>{{proizvodGet.proizvodjac.nazivProizvodjaca}} </td>
+        </tr>
+        <tr>
+          <td><b>Na stanju: </b>{{proizvodGet.naStanju}} </td>
+        </tr>
+        <tr>
+          <td><b>Snizen: </b>{{proizvodGet.snizen?"DA":"NE"}} </td>
+        </tr>
+        <tr>
+          <td><b>Cijena: </b> {{proizvodGet.cijena}}KM</td>
+        </tr>
+
+
+      </table>
+    </div>
+
+  </div>
+
+  <div class="opis">
+    <tr>
+      <td><b>Detaljan opis proizvoda: </b> <br />{{proizvodGet.opis}}</td>
+    </tr>
+    <div style="text-align: right; width: 120%; margin-top: 1%;margin-bottom: 2%">
+      <button  style="margin-right: 1%"   class="btn btn-primary" routerLink="/pocetna" > Nazad </button>
+      <button *ngIf="loginInfo().isPermisijaKorisnik"  style="margin-right: 1%"   class="btn btn-primary"  > Naruči </button>
+      <button *ngIf="!loginInfo().isLogiran" style="margin-right: 1%"  routerLink="/registracija" class="btn btn-primary" > Naruči </button>
+
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,82 @@
+<br>
+<div class="okvirSve">
+<table class="table table-striped" id="okvirTabele">
+  <tr>
+    <th>Naslov</th>
+    <th id="sadrzaj">Sadrzaj</th>
+    <th>Datum objave</th>
+    <th>Slika</th>
+    <th>Autor posta</th>
+    <th>Uredi</th>
+    <th>Obrisi</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let p of getPostPodaci()">
+    <th>{{p.naslov}}</th>
+    <th>{{p.sadrzaj}}</th>
+    <th>{{p.datumObjave | date:'dd.MM.yyyy.' }}</th>
+    <th>
+      <img class="profilna-slika" style="width: 50px" src="{{getSlika(p)}}">
+    </th>
+    <th>{{p.autorPosta.ime}}</th>
+    <th><button class="dugme" (click)="urediPost(p)">Uredi</button></th>
+    <th><button class="dugme" (click)="obrisiPost(p)">Obrisi</button></th>
+  </tr>
+  </tbody>
+</table>
+<button class="dugme2" (click)="noviPostDugme()">Dodaj post</button>
+</div>
+<div *ngIf="odabraniPost!=null" class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-modal="true" role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">{{nazivDijaloga}}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="odabraniPost=null"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <div class="mb-3">
+            <label class="form-label">Naslov posta</label>
+            <input class="form-control" [(ngModel)]="odabraniPost.naslov" placeholder="Naslov posta">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Sadrzaj posta</label>
+            <input class="form-control" [(ngModel)]="odabraniPost.sadrzaj" placeholder="Sadrzaj posta">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Datum objave posta</label>
+            <input class="form-control"  type="date"  [(ngModel)]="odabraniPost.datumObjave" placeholder="Datum objave posta" >
+          </div>
+          <div *ngIf="odabraniPost.postID!=0" class="mb-3">
+            <label class="form-label">Stara slika</label>
+            <img style="display: block; max-width: 100%;max-height: 200px" src="{{getSlika(odabraniPost)}}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nova slika</label>
+            <input class="from-control" id="slika-input" type="file" accept="image/*" (change)="generisi_preview()">
+            <img style="max-width: 100%;max-height: 200px" src="{{odabraniPost.slika_posta_nova_base64}}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Autor posta</label>
+            <select class="form-control" [(ngModel)]="odabraniPost.autorPostaID">
+              <option *ngFor="let x of podaciAdministrator" [value]="x.id">{{x.ime}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="odabraniPost=null">Close</button>
+        <button type="button" class="btn btn-primary" (click)="snimiPost()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total">
+</app-pagination>

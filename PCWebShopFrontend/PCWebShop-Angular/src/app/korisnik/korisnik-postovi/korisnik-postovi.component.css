@@ -1,0 +1,66 @@
+.conteiner {
+
+  width: 40%;
+  margin-top: 2%;
+  border: solid 3px #b7b7bb;
+  border-radius: 8px;
+  display: inline-flex;
+  margin-left: 3%;
+}
+.sve
+{
+  margin-left: 10%;
+}
+#naslovID
+{
+  margin-top:50px;
+}
+#strana{
+  width: 180px;
+  text-align: center;
+}
+
+td{
+  margin-right: 20%;
+}
+.sadrzaj{
+  width: 120%;
+  margin-top: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.back{
+  padding-top: 1%;
+}
+.conteiner2 {
+  display: flex;
+}
+.py-2{
+  position: relative;
+}
+.card-image{
+  width: 250px;
+  height: 150px;
+  margin: 15px;
+  border-radius: 10%;
+}
+.card-image:hover{
+  cursor: pointer;
+}
+.picture {
+  width: 150%;
+  height: 100px;
+  margin-bottom: 7%;
+  margin-left: 5%;
+}
+footer {
+  padding-top: 2%;
+}
+
+
+
+
+

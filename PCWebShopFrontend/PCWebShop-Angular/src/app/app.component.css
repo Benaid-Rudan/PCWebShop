@@ -1,0 +1,159 @@
+.btn-danger {
+  margin-left: 10px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background: #1a1e21;
+}
+.dropbtn
+{
+  background-color:black ;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: black;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block; background-color: black;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: black; }
+.nav-item {
+  color: white;
+}
+.sidebar {
+  margin-right: 0%;
+  padding: 0;
+  width: 10%;
+  background-color: white;
+  position: fixed;
+  min-height:70%;
+  overflow: hidden;
+
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  font-size: small;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  color: black;
+  font-size: small;
+}
+#navbar
+{
+  height: 65px;
+}
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  font-size: small;
+}
+#odjava
+{
+  margin-left: 10px;
+  background-color: firebrick;
+}
+#logo{
+  width: 70px;
+  height: 40px;
+  padding: 0;
+}
+#profil
+{
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+}
+#profil2
+{
+  margin-left: 10px;
+}
+#dashboard
+{
+  margin-right: 1px;
+}
+#batn
+{
+  margin-left: 6%;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn1
+{
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn2
+{
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn3
+{
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn4 {
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn5 {
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn6 {
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn7 {
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn8 {
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn9 {
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#batn10 {
+  margin-left: 30px;
+  margin-top: 15px;
+  width: 180px;
+}
+#btn-korpa
+{
+  margin-right: 1px;
+}
